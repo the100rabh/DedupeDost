@@ -6,6 +6,10 @@
 *.dylib
 dup-del
 dup-del.exe
+dedupedost
+dedupedost-gui
+dedupedost.exe
+dedupedost-gui.exe
 
 # Test binary
 *.test
