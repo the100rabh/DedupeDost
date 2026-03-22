@@ -57,15 +57,18 @@ func (r *Registry) Register(provider PreviewProvider) {
 func (r *Registry) GetProvider(file models.FileEntry) PreviewProvider {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
-	
+
 	for _, provider := range r.providers {
 		if provider.CanPreview(file.FileType, file.Extension) {
 			return provider
 		}
 	}
-	
+
 	// Fallback should always be available
-	return r.providers[len(r.providers)-1]
+	if len(r.providers) > 0 {
+		return r.providers[len(r.providers)-1]
+	}
+	return nil
 }
 
 // Preview creates a preview for the given file

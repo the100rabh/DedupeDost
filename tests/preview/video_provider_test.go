@@ -3,6 +3,7 @@ package preview_test
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/dupdel/dup-del/internal/preview"
@@ -155,9 +156,9 @@ func TestVideoProvider_GetVideoMetadata(t *testing.T) {
 		t.Fatal("Expected non-nil metadata")
 	}
 
-	// Format should be detected from extension
-	if metadata.Format != "mp4" {
-		t.Errorf("Expected format mp4, got %s", metadata.Format)
+	// Format should contain "mp4" (may be comma-separated list like "mov,mp4,m4a")
+	if !strings.Contains(metadata.Format, "mp4") {
+		t.Errorf("Expected format to contain mp4, got %s", metadata.Format)
 	}
 }
 

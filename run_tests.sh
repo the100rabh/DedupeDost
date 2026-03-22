@@ -5,14 +5,18 @@
 # This script runs all tests for the DupDel project with various options.
 #
 # Usage:
-#   ./run_tests.sh              # Run all tests with coverage
-#   ./run_tests.sh -v           # Run with verbose output
-#   ./run_tests.sh -race        # Run with race detector
-#   ./run_tests.sh -gui         # Include GUI tests (requires X11/OpenGL)
-#   ./run_tests.sh -headless    # Run only non-GUI tests (default)
-#   ./run_tests.sh -html        # Generate HTML coverage report
-#   ./run_tests.sh -clean       # Clean test cache before running
-#   ./run_tests.sh -help        # Show this help message
+#   bash run_tests.sh              # Run all tests with coverage
+#   bash run_tests.sh -v           # Run with verbose output
+#   bash run_tests.sh -race        # Run with race detector
+#   bash run_tests.sh -gui         # Include GUI tests (requires X11/OpenGL)
+#   bash run_tests.sh -headless    # Run only non-GUI tests (default)
+#   bash run_tests.sh -html        # Generate HTML coverage report
+#   bash run_tests.sh -clean       # Clean test cache before running
+#   bash run_tests.sh -help        # Show this help message
+#
+# Note: Run with bash, not sh:
+#   bash run_tests.sh    # ✓ Correct
+#   sh run_tests.sh      # ✗ Wrong (sh doesn't support bash arrays)
 
 set -e
 
