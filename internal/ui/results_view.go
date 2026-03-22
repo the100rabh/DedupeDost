@@ -452,7 +452,7 @@ func (rv *ResultsView) onGroupSelected(index int) {
 	}
 
 	rv.selectedGroup = index
-	group := rv.filteredGroups[index]
+	group := &rv.filteredGroups[index]
 
 	// Show preview
 	if rv.dupDelApp != nil && rv.dupDelApp.mainView != nil {

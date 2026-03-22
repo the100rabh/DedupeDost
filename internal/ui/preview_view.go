@@ -26,7 +26,7 @@ type PreviewView struct {
 	applyToAll    *widget.Check
 	saveBtn       *widget.Button
 	skipBtn       *widget.Button
-	currentGroup  models.DuplicateGroup
+	currentGroup  *models.DuplicateGroup // Pointer to group in filteredGroups
 	groupIndex    int
 	totalGroups   int
 	dupDelApp     *DupDelApp
@@ -139,7 +139,7 @@ func (pv *PreviewView) Container() *fyne.Container {
 }
 
 // setGroup sets the group to preview
-func (pv *PreviewView) setGroup(group models.DuplicateGroup) {
+func (pv *PreviewView) setGroup(group *models.DuplicateGroup) {
 	pv.currentGroup = group
 	pv.fileIndex = 0
 
@@ -262,7 +262,7 @@ func (pv *PreviewView) updateActionButtons() {
 }
 
 // isFileKept checks if a file at the given index is kept
-func isFileKept(index int, group models.DuplicateGroup) bool {
+func isFileKept(index int, group *models.DuplicateGroup) bool {
 	for _, delPath := range group.DeletePaths {
 		// Check if this index is in delete paths
 		if index < len(group.Files) && group.Files[index].Path == delPath {
@@ -330,7 +330,7 @@ func (pv *PreviewView) refreshResultsView() {
 func (pv *PreviewView) SetGroups(groups []models.DuplicateGroup) {
 	pv.totalGroups = len(groups)
 	if len(groups) > 0 {
-		pv.setGroup(groups[0])
+		pv.setGroup(&groups[0])
 		pv.groupIndex = 0
 	}
 }
@@ -342,7 +342,7 @@ func (pv *PreviewView) previousGroup() {
 		if pv.dupDelApp != nil && pv.dupDelApp.mainView != nil {
 			groups := pv.dupDelApp.mainView.resultsView.filteredGroups
 			if pv.groupIndex < len(groups) {
-				pv.setGroup(groups[pv.groupIndex])
+				pv.setGroup(&groups[pv.groupIndex])
 			}
 		}
 	}
@@ -355,7 +355,7 @@ func (pv *PreviewView) nextGroup() {
 		if pv.dupDelApp != nil && pv.dupDelApp.mainView != nil {
 			groups := pv.dupDelApp.mainView.resultsView.filteredGroups
 			if pv.groupIndex < len(groups) {
-				pv.setGroup(groups[pv.groupIndex])
+				pv.setGroup(&groups[pv.groupIndex])
 			}
 		}
 	}
