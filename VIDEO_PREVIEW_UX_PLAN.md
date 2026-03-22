@@ -1,7 +1,7 @@
 # Video Preview Feature - UX Design Plan
 
 ## Overview
-This document outlines the user experience design for video preview functionality in DupDel, ensuring intuitive interaction and clear visual feedback.
+This document outlines the user experience design for video preview functionality in DedupeDost, ensuring intuitive interaction and clear visual feedback.
 
 ---
 
@@ -401,4 +401,4 @@ Color480p  = color.RGBA{128, 128, 128, 255} // Gray
 
 **Document Version**: 1.0.0
 **Last Updated**: 2024-03-20
-**Author**: DupDel Team
+**Author**: DedupeDost Team

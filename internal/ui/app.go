@@ -9,8 +9,8 @@ import (
 	"fyne.io/fyne/v2/dialog"
 )
 
-// DupDelApp represents the main application
-type DupDelApp struct {
+// DedupeDostApp represents the main application
+type DedupeDostApp struct {
 	app         fyne.App
 	mainWindow  fyne.Window
 	mainView    *MainView
@@ -30,20 +30,20 @@ type MainView struct {
 	statusBar    *StatusBar
 }
 
-// NewDupDelApp creates a new DupDel application
-func NewDupDelApp() *DupDelApp {
+// NewDedupeDostApp creates a new DedupeDost application
+func NewDedupeDostApp() *DedupeDostApp {
 	a := app.NewWithID("io.github.dupdel.app")
 
-	d := &DupDelApp{
+	d := &DedupeDostApp{
 		app: a,
 	}
 
 	return d
 }
 
-// NewDupDelAppWithFyneApp creates a DupDelApp with a specific Fyne app (for testing)
-func NewDupDelAppWithFyneApp(fyneApp fyne.App) *DupDelApp {
-	d := &DupDelApp{
+// NewDedupeDostAppWithFyneApp creates a DedupeDostApp with a specific Fyne app (for testing)
+func NewDedupeDostAppWithFyneApp(fyneApp fyne.App) *DedupeDostApp {
+	d := &DedupeDostApp{
 		app: fyneApp,
 	}
 
@@ -51,14 +51,14 @@ func NewDupDelAppWithFyneApp(fyneApp fyne.App) *DupDelApp {
 }
 
 // Run starts the application
-func (d *DupDelApp) Run() {
+func (d *DedupeDostApp) Run() {
 	d.setupMainWindow()
 	d.mainWindow.ShowAndRun()
 }
 
 // setupMainWindow creates and configures the main window
-func (d *DupDelApp) setupMainWindow() {
-	d.mainWindow = d.app.NewWindow("DupDel - Duplicate File Scanner")
+func (d *DedupeDostApp) setupMainWindow() {
+	d.mainWindow = d.app.NewWindow("DedupeDost - Duplicate File Scanner")
 	d.mainWindow.Resize(fyne.NewSize(1400, 900))
 	d.mainWindow.CenterOnScreen()
 
@@ -78,7 +78,7 @@ func (d *DupDelApp) setupMainWindow() {
 }
 
 // createMainMenu creates the application menu
-func (d *DupDelApp) createMainMenu() *fyne.MainMenu {
+func (d *DedupeDostApp) createMainMenu() *fyne.MainMenu {
 	// File menu
 	fileMenu := fyne.NewMenu("File",
 		fyne.NewMenuItem("Open Directory...", func() {
@@ -127,20 +127,20 @@ func (d *DupDelApp) createMainMenu() *fyne.MainMenu {
 }
 
 // showAboutDialog shows the about dialog
-func (d *DupDelApp) showAboutDialog() {
-	dialog.ShowInformation("About DupDel", 
-		"DupDel v1.0.0\n\nDuplicate File Scanner\n\nA powerful tool to find and remove duplicate files.\n\nFeatures:\n- Recursive directory scanning\n- SHA-256 hash-based detection\n- Side-by-side file preview\n- Safe bash script generation\n\nMade with ❤️ using Go and Fyne", 
+func (d *DedupeDostApp) showAboutDialog() {
+	dialog.ShowInformation("About DedupeDost", 
+		"DedupeDost v1.0.0\n\nDuplicate File Scanner\n\nA powerful tool to find and remove duplicate files.\n\nFeatures:\n- Recursive directory scanning\n- SHA-256 hash-based detection\n- Side-by-side file preview\n- Safe bash script generation\n\nMade with ❤️ using Go and Fyne", 
 		d.mainWindow)
 }
 
 // onClose handles application close
-func (d *DupDelApp) onClose() {
+func (d *DedupeDostApp) onClose() {
 	// Cleanup if needed
 	d.app.Quit()
 }
 
 // SetScanDirectory sets the scan directory
-func (d *DupDelApp) SetScanDirectory(dir string) {
+func (d *DedupeDostApp) SetScanDirectory(dir string) {
 	d.scanDir = dir
 	if d.mainView != nil && d.mainView.directoryBar != nil {
 		d.mainView.directoryBar.SetPath(dir)
@@ -149,12 +149,12 @@ func (d *DupDelApp) SetScanDirectory(dir string) {
 }
 
 // GetScanDirectory returns the current scan directory
-func (d *DupDelApp) GetScanDirectory() string {
+func (d *DedupeDostApp) GetScanDirectory() string {
 	return d.scanDir
 }
 
 // StartScan starts the scanning process
-func (d *DupDelApp) StartScan() {
+func (d *DedupeDostApp) StartScan() {
 	if d.scanDir == "" {
 		dialog.ShowError(fmt.Errorf("please select a directory first"), d.mainWindow)
 		return
@@ -164,11 +164,11 @@ func (d *DupDelApp) StartScan() {
 }
 
 // StopScan stops the scanning process
-func (d *DupDelApp) StopScan() {
+func (d *DedupeDostApp) StopScan() {
 	d.mainView.stopScan()
 }
 
 // GenerateScript generates the cleanup script
-func (d *DupDelApp) GenerateScript() {
+func (d *DedupeDostApp) GenerateScript() {
 	d.mainView.generateScript()
 }

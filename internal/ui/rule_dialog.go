@@ -10,8 +10,8 @@ import (
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/dupdel/dup-del/internal/rules"
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/internal/rules"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // RuleDialog displays the rule selection dialog

@@ -1,7 +1,7 @@
 @echo off
-REM DupDel Test Runner Script (Windows)
+REM DedupeDost Test Runner Script (Windows)
 REM ====================================
-REM This script runs all tests for the DupDel project.
+REM This script runs all tests for the DedupeDost project.
 REM
 REM Usage:
 REM   run_tests.bat              - Run all tests with coverage
@@ -35,7 +35,7 @@ echo Use -help for usage information
 goto :eof
 
 :show_help
-echo DupDel Test Runner Script (Windows)
+echo DedupeDost Test Runner Script (Windows)
 echo ===================================
 echo.
 echo Usage:
@@ -58,7 +58,7 @@ goto :eof
 :run_tests
 echo.
 echo ========================================
-echo   DupDel Test Suite
+echo   DedupeDost Test Suite
 echo ========================================
 echo.
 
@@ -72,7 +72,7 @@ if %CLEAN%==1 (
 echo Running tests...
 echo.
 
-go test ./pkg/... ./internal/detector/... ./internal/hasher/... ./internal/rules/... ./internal/scanner/... ./internal/script/... ./internal/platform/... ./cmd/dup-del/... %VERBOSE% %RACE% -coverprofile=%COVERAGE_PROFILE%
+go test ./pkg/... ./internal/detector/... ./internal/hasher/... ./internal/rules/... ./internal/scanner/... ./internal/script/... ./internal/platform/... ./cmd/dedupedost/... %VERBOSE% %RACE% -coverprofile=%COVERAGE_PROFILE%
 
 if errorlevel 1 (
     echo.

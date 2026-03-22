@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dupdel/dup-del/pkg/types"
+	"github.com/the100rabh/DedupeDost/pkg/types"
 )
 
 // FileEntry represents a file in the file system

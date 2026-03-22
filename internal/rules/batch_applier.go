@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // BatchApplier applies rules to multiple groups

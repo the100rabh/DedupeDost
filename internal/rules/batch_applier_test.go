@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dupdel/dup-del/internal/rules"
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/internal/rules"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // TestBatchApplier_NewBatchApplier tests NewBatchApplier

@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dupdel/dup-del/internal/script"
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/internal/script"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // Helper function to create test file entries
@@ -175,7 +175,7 @@ func TestGenerator_SetIncludeHeader(t *testing.T) {
 	}
 
 	contentStr := string(content)
-	if strings.Contains(contentStr, "DupDel Cleanup Script") {
+	if strings.Contains(contentStr, "DedupeDost Cleanup Script") {
 		t.Error("Script should not contain header when SetIncludeHeader(false)")
 	}
 }
@@ -564,7 +564,7 @@ func TestGenerator_WithAllOptions(t *testing.T) {
 	contentStr := string(content)
 	
 	// Should not contain header
-	if strings.Contains(contentStr, "DupDel Cleanup Script") {
+	if strings.Contains(contentStr, "DedupeDost Cleanup Script") {
 		t.Error("Script should not contain header")
 	}
 	

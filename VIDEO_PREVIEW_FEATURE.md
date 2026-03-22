@@ -6,7 +6,7 @@
 
 ## Overview
 
-The Video Preview feature enables users to preview video files side-by-side in DupDel, with thumbnail extraction, comprehensive metadata display, and the ability to open videos in the system's default player.
+The Video Preview feature enables users to preview video files side-by-side in DedupeDost, with thumbnail extraction, comprehensive metadata display, and the ability to open videos in the system's default player.
 
 ---
 
@@ -151,7 +151,7 @@ func (vp *VideoProvider) OpenInPlayer(path string) error
 === RUN   TestVideoProvider_ExtractThumbnail
 --- PASS: TestVideoProvider_ExtractThumbnail (0.00s)
 PASS
-ok      github.com/dupdel/dup-del/tests/preview 0.052s
+ok      github.com/dupdel/dedupedost/tests/preview 0.052s
 ```
 
 ---

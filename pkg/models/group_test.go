@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dupdel/dup-del/pkg/models"
-	"github.com/dupdel/dup-del/pkg/types"
+	"github.com/the100rabh/DedupeDost/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/types"
 )
 
 // Helper function to create test file entries

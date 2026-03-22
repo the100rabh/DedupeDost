@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dupdel/dup-del/internal/hasher"
+	"github.com/the100rabh/DedupeDost/internal/hasher"
 )
 
 // TestNewHashCache tests NewHashCache

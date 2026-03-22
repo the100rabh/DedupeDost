@@ -9,8 +9,8 @@ import (
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/dupdel/dup-del/internal/preview"
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/internal/preview"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // PreviewView represents the file preview view
@@ -29,12 +29,12 @@ type PreviewView struct {
 	currentGroup  *models.DuplicateGroup // Pointer to group in filteredGroups
 	groupIndex    int
 	totalGroups   int
-	dupDelApp     *DupDelApp
+	dupDelApp     *DedupeDostApp
 	registry      *preview.Registry
 }
 
 // NewPreviewView creates a new preview view
-func NewPreviewView(dupDelApp *DupDelApp) *PreviewView {
+func NewPreviewView(dupDelApp *DedupeDostApp) *PreviewView {
 	pv := &PreviewView{
 		dupDelApp:   dupDelApp,
 		groupIndex:  -1,

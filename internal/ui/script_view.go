@@ -12,8 +12,8 @@ import (
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/dupdel/dup-del/internal/script"
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/internal/script"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // ScriptView represents the script preview view
@@ -30,11 +30,11 @@ type ScriptView struct {
 	copyButton      *widget.Button
 	generator       *script.Generator
 	session         *models.ScanSession
-	dupDelApp       *DupDelApp
+	dupDelApp       *DedupeDostApp
 }
 
 // NewScriptView creates a new script view
-func NewScriptView(dupDelApp *DupDelApp) *ScriptView {
+func NewScriptView(dupDelApp *DedupeDostApp) *ScriptView {
 	sv := &ScriptView{
 		dupDelApp: dupDelApp,
 	}
@@ -174,7 +174,7 @@ func (sv *ScriptView) generatorForPreview(session *models.ScanSession) string {
 	// Header
 	content += "#!/bin/bash\n\n"
 	content += "# ============================================\n"
-	content += "# DupDel Cleanup Script\n"
+	content += "# DedupeDost Cleanup Script\n"
 	content += "# ============================================\n"
 	content += fmt.Sprintf("# Generated: %s\n", session.StartTime.Format("2006-01-02 15:04:05"))
 	content += fmt.Sprintf("# Source Directory: %s\n", session.SourceDir)

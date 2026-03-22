@@ -13,7 +13,7 @@ import (
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // ResultsView represents the results list view
@@ -28,7 +28,7 @@ type ResultsView struct {
 	groups         []*models.DuplicateGroup
 	filteredGroups []*models.DuplicateGroup
 	selectedGroup  int
-	dupDelApp      *DupDelApp
+	dupDelApp      *DedupeDostApp
 	cards          []*resultsCard
 	scroll         *container.Scroll
 }
@@ -119,7 +119,7 @@ func (r *hoverableCardRenderer) Destroy() {
 }
 
 // NewResultsView creates a new results view
-func NewResultsView(dupDelApp *DupDelApp) *ResultsView {
+func NewResultsView(dupDelApp *DedupeDostApp) *ResultsView {
 	rv := &ResultsView{
 		dupDelApp:      dupDelApp,
 		groups:         make([]*models.DuplicateGroup, 0),

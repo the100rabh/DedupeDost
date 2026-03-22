@@ -1,4 +1,4 @@
-# DupDel Implementation Prompts
+# DedupeDost Implementation Prompts
 
 This document contains detailed prompts for implementing each task in the implementation plan.
 
@@ -9,12 +9,12 @@ This document contains detailed prompts for implementing each task in the implem
 ### Task 1.1: Project Initialization
 
 ```
-Create a Go project structure for a duplicate file scanner application called "DupDel".
+Create a Go project structure for a duplicate file scanner application called "DedupeDost".
 
 Requirements:
-1. Initialize Go module with name "github.com/dupdel/dup-del" and Go 1.21+ requirement
+1. Initialize Go module with name "github.com/dupdel/dedupedost" and Go 1.21+ requirement
 2. Create the following directory structure:
-   - cmd/dup-del/ (main entry point)
+   - cmd/dedupedost/ (main entry point)
    - internal/app/ (application logic)
    - internal/scanner/ (file scanning)
    - internal/hasher/ (hash calculation)
@@ -30,7 +30,7 @@ Requirements:
 
 3. Create a .gitignore file for Go projects (include: binaries, dependencies, OS files)
 4. Create a LICENSE file with MIT license
-5. Create an initial main.go in cmd/dup-del/ that prints "DupDel v1.0.0" and exits
+5. Create an initial main.go in cmd/dedupedost/ that prints "DedupeDost v1.0.0" and exits
 
 Output: Complete project structure with all directories and initial files.
 ```
@@ -40,7 +40,7 @@ Output: Complete project structure with all directories and initial files.
 ### Task 1.2: Define Core Data Models
 
 ```
-Create the core data models for the DupDel application in the pkg/models/ directory.
+Create the core data models for the DedupeDost application in the pkg/models/ directory.
 
 Files to create:
 
@@ -116,7 +116,7 @@ Output: All model files with proper Go code, constructors, and methods.
 ### Task 1.3: File System Scanner
 
 ```
-Create the file system scanner component for DupDel.
+Create the file system scanner component for DedupeDost.
 
 Files to create:
 
@@ -204,7 +204,7 @@ Output: Complete test file with all test cases passing.
 ### Task 1.5: Hash Calculator
 
 ```
-Create the hash calculation component for DupDel.
+Create the hash calculation component for DedupeDost.
 
 Files to create:
 
@@ -248,7 +248,7 @@ Output: Complete hasher implementation with worker pool support.
 ### Task 1.6: Duplicate Detector
 
 ```
-Create the duplicate detection component for DupDel.
+Create the duplicate detection component for DedupeDost.
 
 Files to create:
 
@@ -331,11 +331,11 @@ Output: Complete test suite with passing tests and benchmark results.
 ### Task 1.8: CLI Application
 
 ```
-Create the CLI entry point for DupDel.
+Create the CLI entry point for DedupeDost.
 
 Files to create:
 
-1. cmd/dup-del/main.go:
+1. cmd/dedupedost/main.go:
    - Parse command line flags:
      * --dir, -d string: Directory to scan (default: current)
      * --min-size int: Minimum file size in bytes (default: 0)
@@ -353,13 +353,13 @@ Files to create:
    - Display progress with text-based progress bar
    - Generate script on completion
 
-2. cmd/dup-del/output.go:
+2. cmd/dedupedost/output.go:
    - Create progress display functions
    - Create results summary display
    - Implement text-based progress bar
    - Format file sizes for display
 
-3. cmd/dup-del/script.go:
+3. cmd/dedupedost/script.go:
    - Handle script generation from CLI
    - Display script location on completion
 
@@ -446,7 +446,7 @@ Output: Phase 1 complete with all tests passing.
 ### Task 2.1: Fyne Integration
 
 ```
-Set up Fyne GUI framework for DupDel.
+Set up Fyne GUI framework for DedupeDost.
 
 Tasks:
 1. Add dependencies to go.mod:
@@ -471,7 +471,7 @@ Output: Fyne dependencies installed and basic app running.
 ### Task 2.2: Main Window Layout
 
 ```
-Create the main window layout for DupDel GUI.
+Create the main window layout for DedupeDost GUI.
 
 Files to create:
 
@@ -515,7 +515,7 @@ Output: Main window with menu, toolbar, and status bar.
 ### Task 2.3: Directory Selection Dialog
 
 ```
-Create directory selection dialog for DupDel.
+Create directory selection dialog for DedupeDost.
 
 Files to create:
 

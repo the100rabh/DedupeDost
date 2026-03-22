@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dupdel/dup-del/internal/detector"
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/internal/detector"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // TestNewStatsCalculator tests NewStatsCalculator

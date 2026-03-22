@@ -7,7 +7,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // Grouper provides utilities for grouping files

@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # =============================================================================
-# DupDel - Test File Generator
+# DedupeDost - Test File Generator
 # =============================================================================
 # This script creates a test directory structure with duplicate and unique files
-# for testing the DupDel duplicate file scanner application.
+# for testing the DedupeDost duplicate file scanner application.
 #
 # Usage: ./gen_test_files.sh [test_directory]
 # Example: ./gen_test_files.sh ./test_data
@@ -13,7 +13,7 @@
 TEST_DIR="${1:-./test_data}"
 
 echo "╔══════════════════════════════════════════════════════════╗"
-echo "║       DupDel Test File Generator                         ║"
+echo "║       DedupeDost Test File Generator                         ║"
 echo "╚══════════════════════════════════════════════════════════╝"
 echo ""
 
@@ -318,9 +318,9 @@ echo "  18. presentation.avi    (2 copies) [AVI Video]"
 echo ""
 echo "Next Steps:"
 echo "  ────────────────────────────────────────"
-echo "  1. Run DupDel CLI:  ./dup-del -dir $TEST_DIR"
-echo "  2. Run DupDel GUI:  ./dup-del-gui"
+echo "  1. Run DedupeDost CLI:  ./dedupedost -dir $TEST_DIR"
+echo "  2. Run DedupeDost GUI:  ./dedupedost-gui"
 echo "  3. Review detected duplicates"
 echo "  4. Generate and review cleanup script"
 echo ""
-echo "✓ Test files ready for DupDel testing!"
+echo "✓ Test files ready for DedupeDost testing!"

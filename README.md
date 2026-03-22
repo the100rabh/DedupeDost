@@ -1,4 +1,4 @@
-# DupDel - Duplicate File Scanner & Cleaner
+# DedupeDost - Duplicate File Scanner & Cleaner
 
 A powerful Go application that scans directories recursively to find duplicate files, previews them side-by-side, and generates safe cleanup scripts.
 
@@ -119,9 +119,9 @@ sudo apt-get install libgl1-mesa-dev xorg-dev
 | internal/hasher | 80% | ✅ 84.8% |
 | internal/rules | 70% | ✅ 71.1% |
 | internal/scanner | 70% | ✅ 71.1% |
-| cmd/dup-del | 70% | ✅ 71.7% |
+| cmd/dedupedost | 70% | ✅ 71.7% |
 
-Note: GUI packages (`internal/ui`, `cmd/dup-del-gui`) require X11/OpenGL and are tested separately.
+Note: GUI packages (`internal/ui`, `cmd/dedupedost-gui`) require X11/OpenGL and are tested separately.
 
 ## 📦 Installation
 
@@ -129,17 +129,17 @@ Note: GUI packages (`internal/ui`, `cmd/dup-del-gui`) require X11/OpenGL and are
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/dup-del.git
-cd dup-del
+git clone https://github.com/yourusername/dedupedost.git
+cd dedupedost
 
 # Install dependencies
 go mod download
 
 # Build the CLI application
-go build -o dup-del ./cmd/dup-del
+go build -o dedupedost ./cmd/dedupedost
 
 # Run the application
-./dup-del --help
+./dedupedost --help
 ```
 
 ### Build GUI (Requires System Dependencies)
@@ -152,8 +152,8 @@ sudo apt-get install libgl1-mesa-dev xorg-dev
 xcode-select --install
 
 # Build GUI application
-go build -o dup-del-gui ./cmd/dup-del-gui
-./dup-del-gui
+go build -o dedupedost-gui ./cmd/dedupedost-gui
+./dedupedost-gui
 ```
 
 ## 🚀 Usage
@@ -162,22 +162,22 @@ go build -o dup-del-gui ./cmd/dup-del-gui
 
 ```bash
 # Basic scan of current directory
-./dup-del
+./dedupedost
 
 # Scan a specific directory
-./dup-del --dir /path/to/scan
+./dedupedost --dir /path/to/scan
 
 # With size filters
-./dup-del --dir /path/to/scan --min-size 1024 --max-size 104857600
+./dedupedost --dir /path/to/scan --min-size 1024 --max-size 104857600
 
 # Scan specific file types only
-./dup-del --dir /path/to/scan --types "jpg,png,txt"
+./dedupedost --dir /path/to/scan --types "jpg,png,txt"
 
 # Custom output script location
-./dup-del --dir /path/to/scan --output /tmp/cleanup.sh
+./dedupedost --dir /path/to/scan --output /tmp/cleanup.sh
 
 # Skip hidden files
-./dup-del --dir /path/to/scan --ignore-hidden
+./dedupedost --dir /path/to/scan --ignore-hidden
 ```
 
 ### Command Line Options
@@ -198,9 +198,9 @@ go build -o dup-del-gui ./cmd/dup-del-gui
 ### Example Output
 
 ```
-$ ./dup-del -dir ./test_data
+$ ./dedupedost -dir ./test_data
 
-DupDel v1.0.0 - Duplicate File Scanner
+DedupeDost v1.0.0 - Duplicate File Scanner
 ======================================
 
 Scanning: /home/user/test_data
@@ -239,7 +239,7 @@ To execute deletions:
 
 ## 🛡️ Safe by Design
 
-DupDel **never deletes files directly**. Instead, it:
+DedupeDost **never deletes files directly**. Instead, it:
 
 1. Scans and identifies duplicates using SHA-256 hashing
 2. Shows results with full file paths and keep/delete indicators
@@ -268,7 +268,7 @@ DupDel **never deletes files directly**. Instead, it:
 
 ```bash
 #!/bin/bash
-# DupDel Cleanup Script
+# DedupeDost Cleanup Script
 # Generated: 2024-03-16 10:30:00
 # Source Directory: /home/user/documents
 # Total files to delete: 28
@@ -342,11 +342,11 @@ delete_file "/home/user/old/vacation.mp4"
 ## 📂 Project Structure
 
 ```
-dup-del/
+dedupedost/
 ├── cmd/
-│   ├── dup-del/           # CLI application
+│   ├── dedupedost/           # CLI application
 │   │   └── main.go
-│   └── dup-del-gui/       # GUI application
+│   └── dedupedost-gui/       # GUI application
 │       └── main.go
 ├── internal/
 │   ├── app/               # Application lifecycle
@@ -396,10 +396,10 @@ dup-del/
 
 ```bash
 # Development build
-go build -o dup-del ./cmd/dup-del
+go build -o dedupedost ./cmd/dedupedost
 
 # Optimized release build
-go build -ldflags="-s -w" -o dup-del ./cmd/dup-del
+go build -ldflags="-s -w" -o dedupedost ./cmd/dedupedost
 
 # Run tests
 go test ./... -v
@@ -492,7 +492,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - 📧 Email: support@dupdel.app
-- 💬 Issues: [GitHub Issues](https://github.com/yourusername/dup-del/issues)
+- 💬 Issues: [GitHub Issues](https://github.com/yourusername/dedupedost/issues)
 - 📖 Documentation: See `PRODUCT_SPEC.md` and `IMPLEMENTATION_PLAN.md`
 
 ---

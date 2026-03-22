@@ -13,8 +13,8 @@ import (
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/dupdel/dup-del/internal/detector"
-	"github.com/dupdel/dup-del/internal/scanner"
+	"github.com/the100rabh/DedupeDost/internal/detector"
+	"github.com/the100rabh/DedupeDost/internal/scanner"
 )
 
 // ScanView represents the scan progress view
@@ -29,14 +29,14 @@ type ScanView struct {
 	statsBox      *fyne.Container
 	stopButton    *widget.Button
 	startButton   *widget.Button
-	dupDelApp     *DupDelApp
+	dupDelApp     *DedupeDostApp
 	scanner       *scanner.Scanner
 	detector      *detector.Detector
 	isScanning    int32
 }
 
 // NewScanView creates a new scan view
-func NewScanView(dupDelApp *DupDelApp) *ScanView {
+func NewScanView(dupDelApp *DedupeDostApp) *ScanView {
 	sv := &ScanView{
 		dupDelApp: dupDelApp,
 	}

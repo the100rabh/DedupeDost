@@ -8,7 +8,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // ScanOptions contains options for scanning directories

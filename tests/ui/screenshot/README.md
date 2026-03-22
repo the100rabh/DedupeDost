@@ -1,6 +1,6 @@
 # Screenshot-Based UI Testing
 
-This package provides screenshot-based visual regression testing for DupDel UI components.
+This package provides screenshot-based visual regression testing for DedupeDost UI components.
 
 ## How It Works
 

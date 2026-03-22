@@ -3,7 +3,7 @@ package scanner_test
 import (
 	"testing"
 
-	"github.com/dupdel/dup-del/internal/scanner"
+	"github.com/the100rabh/DedupeDost/internal/scanner"
 )
 
 // TestShouldIncludeHidden tests ShouldIncludeHidden function

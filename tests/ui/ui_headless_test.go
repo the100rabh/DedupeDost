@@ -8,7 +8,7 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/test"
 
-	"github.com/dupdel/dup-del/internal/ui"
+	"github.com/the100rabh/DedupeDost/internal/ui"
 )
 
 // TestFilterPanel_Creation tests filter panel creation

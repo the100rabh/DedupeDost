@@ -13,11 +13,11 @@ import (
 	"fyne.io/fyne/v2/test"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/dupdel/dup-del/internal/script"
-	"github.com/dupdel/dup-del/internal/ui"
-	"github.com/dupdel/dup-del/pkg/models"
-	"github.com/dupdel/dup-del/pkg/types"
-	"github.com/dupdel/dup-del/tests/ui/screenshot"
+	"github.com/the100rabh/DedupeDost/internal/script"
+	"github.com/the100rabh/DedupeDost/internal/ui"
+	"github.com/the100rabh/DedupeDost/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/types"
+	"github.com/the100rabh/DedupeDost/tests/ui/screenshot"
 )
 
 var update = flag.Bool("update", false, "Update golden images")
@@ -30,7 +30,7 @@ func TestScreenshot_DirectoryBar(t *testing.T) {
 	var window fyne.Window
 
 	fyne.DoAndWait(func() {
-		dupDelApp := ui.NewDupDelAppWithFyneApp(app)
+		dupDelApp := ui.NewDedupeDostAppWithFyneApp(app)
 		dirBar = ui.NewDirectoryBar(dupDelApp)
 		window = test.NewWindow(dirBar.Container())
 	})
@@ -102,7 +102,7 @@ func TestScreenshot_ScanView(t *testing.T) {
 	var window fyne.Window
 
 	fyne.DoAndWait(func() {
-		dupDelApp := ui.NewDupDelAppWithFyneApp(app)
+		dupDelApp := ui.NewDedupeDostAppWithFyneApp(app)
 		scanView = ui.NewScanView(dupDelApp)
 		window = test.NewWindow(scanView.Container())
 	})
@@ -125,7 +125,7 @@ func TestScreenshot_ResultsView(t *testing.T) {
 	var window fyne.Window
 
 	fyne.DoAndWait(func() {
-		dupDelApp := ui.NewDupDelAppWithFyneApp(app)
+		dupDelApp := ui.NewDedupeDostAppWithFyneApp(app)
 		resultsView = ui.NewResultsView(dupDelApp)
 		window = test.NewWindow(resultsView.Container())
 		window.Resize(fyne.NewSize(1200, 800))
@@ -203,7 +203,7 @@ func TestScreenshot_PreviewView(t *testing.T) {
 	var window fyne.Window
 
 	fyne.DoAndWait(func() {
-		dupDelApp := ui.NewDupDelAppWithFyneApp(app)
+		dupDelApp := ui.NewDedupeDostAppWithFyneApp(app)
 		previewView = ui.NewPreviewView(dupDelApp)
 		window = test.NewWindow(previewView.Container())
 		window.Resize(fyne.NewSize(1000, 700))
@@ -250,7 +250,7 @@ func TestScreenshot_VideoPreview(t *testing.T) {
 	var window fyne.Window
 
 	fyne.DoAndWait(func() {
-		dupDelApp := ui.NewDupDelAppWithFyneApp(app)
+		dupDelApp := ui.NewDedupeDostAppWithFyneApp(app)
 		previewView = ui.NewPreviewView(dupDelApp)
 		window = test.NewWindow(previewView.Container())
 		window.Resize(fyne.NewSize(1000, 700))
@@ -306,7 +306,7 @@ func TestScreenshot_ScriptView(t *testing.T) {
 	var window fyne.Window
 
 	fyne.DoAndWait(func() {
-		dupDelApp := ui.NewDupDelAppWithFyneApp(app)
+		dupDelApp := ui.NewDedupeDostAppWithFyneApp(app)
 		scriptView = ui.NewScriptView(dupDelApp)
 		window = test.NewWindow(scriptView.Container())
 		window.Resize(fyne.NewSize(900, 600))
@@ -413,7 +413,7 @@ func TestScreenshot_MainWindow(t *testing.T) {
 	var window fyne.Window
 
 	fyne.DoAndWait(func() {
-		dupDelApp := ui.NewDupDelAppWithFyneApp(app)
+		dupDelApp := ui.NewDedupeDostAppWithFyneApp(app)
 		mainView = ui.NewMainView(dupDelApp)
 		window = test.NewWindow(mainView.Container())
 		window.Resize(fyne.NewSize(1200, 800))
@@ -435,7 +435,7 @@ func generatorForPreview(gen *script.Generator, session *models.ScanSession) str
 
 	content += "#!/bin/bash\n\n"
 	content += "# ============================================\n"
-	content += "# DupDel Cleanup Script\n"
+	content += "# DedupeDost Cleanup Script\n"
 	content += "# ============================================\n"
 	content += fmt.Sprintf("# Generated: %s\n", session.StartTime.Format("2006-01-02 15:04:05"))
 	content += fmt.Sprintf("# Source Directory: %s\n", session.SourceDir)

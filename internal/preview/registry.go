@@ -9,8 +9,8 @@ import (
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 
-	"github.com/dupdel/dup-del/pkg/models"
-	"github.com/dupdel/dup-del/pkg/types"
+	"github.com/the100rabh/DedupeDost/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/types"
 )
 
 // PreviewProvider defines the interface for file preview providers

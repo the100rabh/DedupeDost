@@ -1,6 +1,6 @@
 package models
 
-import "github.com/dupdel/dup-del/pkg/types"
+import "github.com/the100rabh/DedupeDost/pkg/types"
 
 // DuplicateGroup represents a group of duplicate files
 type DuplicateGroup struct {

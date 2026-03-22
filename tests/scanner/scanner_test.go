@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dupdel/dup-del/internal/scanner"
+	"github.com/the100rabh/DedupeDost/internal/scanner"
 )
 
 // Helper function to create test directory structure

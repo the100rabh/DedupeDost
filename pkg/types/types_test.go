@@ -3,7 +3,7 @@ package types_test
 import (
 	"testing"
 
-	"github.com/dupdel/dup-del/pkg/types"
+	"github.com/the100rabh/DedupeDost/pkg/types"
 )
 
 // TestGetFileTypeFromExtension tests GetFileTypeFromExtension function

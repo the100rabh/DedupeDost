@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/dupdel/dup-del/internal/script"
+	"github.com/the100rabh/DedupeDost/internal/script"
 )
 
 // TestNewValidator tests NewValidator

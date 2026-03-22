@@ -3,7 +3,7 @@ package models_test
 import (
 	"testing"
 
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // TestRuleCriteria constants

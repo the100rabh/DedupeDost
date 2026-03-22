@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# DupDel Test Runner Script
+# DedupeDost Test Runner Script
 # ==========================
-# This script runs all tests for the DupDel project with various options.
+# This script runs all tests for the DedupeDost project with various options.
 #
 # Usage:
 #   bash run_tests.sh              # Run all tests with coverage
@@ -46,7 +46,7 @@ print_msg() {
 print_header() {
     echo ""
     echo "========================================"
-    echo "  DupDel Test Suite"
+    echo "  DedupeDost Test Suite"
     echo "========================================"
     echo ""
 }
@@ -54,7 +54,7 @@ print_header() {
 # Show help
 show_help() {
     cat << EOF
-DupDel Test Runner Script
+DedupeDost Test Runner Script
 =========================
 
 Usage:
@@ -163,7 +163,7 @@ run_headless_tests() {
         "./internal/scanner/..."
         "./internal/script/..."
         "./internal/platform/..."
-        "./cmd/dup-del/..."
+        "./cmd/dedupedost/..."
         "./tests/detector/..."
         "./tests/scanner/..."
     )
@@ -186,7 +186,7 @@ run_gui_tests() {
     GUI_PACKAGES=(
         "./internal/preview/..."
         "./internal/ui/..."
-        "./cmd/dup-del-gui/..."
+        "./cmd/dedupedost-gui/..."
         "./tests/ui/..."
         "./tests/preview/..."
     )

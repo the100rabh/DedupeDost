@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // TestFormatSize tests the FormatSize function

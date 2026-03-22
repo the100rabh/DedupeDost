@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // Generator generates bash cleanup scripts
@@ -123,7 +123,7 @@ func (g *Generator) generateHeader(session *models.ScanSession) string {
 	var header string
 	
 	header += "# ============================================\n"
-	header += "# DupDel Cleanup Script\n"
+	header += "# DedupeDost Cleanup Script\n"
 	header += "# ============================================\n"
 	header += fmt.Sprintf("# Generated: %s\n", time.Now().Format("2006-01-02 15:04:05"))
 	header += fmt.Sprintf("# Source Directory: %s\n", session.SourceDir)

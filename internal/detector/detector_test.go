@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/dupdel/dup-del/internal/detector"
-	"github.com/dupdel/dup-del/internal/scanner"
+	"github.com/the100rabh/DedupeDost/internal/detector"
+	"github.com/the100rabh/DedupeDost/internal/scanner"
 )
 
 // Helper function to create test directory structure

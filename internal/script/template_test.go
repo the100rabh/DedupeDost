@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/dupdel/dup-del/internal/script"
+	"github.com/the100rabh/DedupeDost/internal/script"
 )
 
 // TestTemplate_Constants tests template constants
@@ -33,7 +33,7 @@ func TestBashScriptTemplate_Content(t *testing.T) {
 	// Check for required elements
 	required := []string{
 		"#!/bin/bash",
-		"DupDel Cleanup Script",
+		"DedupeDost Cleanup Script",
 		"{{.GeneratedTime}}",
 		"{{.SourceDirectory}}",
 		"{{.TotalFiles}}",

@@ -1,4 +1,4 @@
-# DupDel - Phase 3 & 4 Implementation Prompts
+# DedupeDost - Phase 3 & 4 Implementation Prompts
 
 ## Phase 3: Enhanced Preview System
 

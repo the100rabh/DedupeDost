@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/dupdel/dup-del/internal/hasher"
-	"github.com/dupdel/dup-del/internal/scanner"
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/internal/hasher"
+	"github.com/the100rabh/DedupeDost/internal/scanner"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // DetectionStats contains statistics about the detection process

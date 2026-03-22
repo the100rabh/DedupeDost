@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dupdel/dup-del/pkg/models"
+	"github.com/the100rabh/DedupeDost/pkg/models"
 )
 
 // TestNewScanSession tests creating a new scan session

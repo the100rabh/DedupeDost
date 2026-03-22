@@ -1,8 +1,8 @@
-# DupDel UI Testing Guide
+# DedupeDost UI Testing Guide
 
 ## Overview
 
-This document describes how to test the DupDel GUI application.
+This document describes how to test the DedupeDost GUI application.
 
 ## Test Files
 
@@ -214,13 +214,13 @@ func TestList_Selection(t *testing.T) {
 }
 ```
 
-## Testing DupDel Specific Features
+## Testing DedupeDost Specific Features
 
 ### Testing Directory Selection
 
 ```go
 func TestDirectoryBar_Selection(t *testing.T) {
-    app := ui.NewDupDelApp()
+    app := ui.NewDedupeDostApp()
     dirBar := ui.NewDirectoryBar(app)
     
     dirBar.SetPath("/test/path")
@@ -249,7 +249,7 @@ func TestFilterPanel_Options(t *testing.T) {
 
 ```go
 func TestResultsView_Groups(t *testing.T) {
-    app := ui.NewDupDelApp()
+    app := ui.NewDedupeDostApp()
     view := ui.NewResultsView(app)
     
     groups := []models.DuplicateGroup{
@@ -266,7 +266,7 @@ func TestResultsView_Groups(t *testing.T) {
 
 ```go
 func TestPreviewView_Preview(t *testing.T) {
-    app := ui.NewDupDelApp()
+    app := ui.NewDedupeDostApp()
     view := ui.NewPreviewView(app)
     
     group := models.DuplicateGroup{
@@ -283,7 +283,7 @@ func TestPreviewView_Preview(t *testing.T) {
 
 ```go
 func TestScriptView_Generation(t *testing.T) {
-    app := ui.NewDupDelApp()
+    app := ui.NewDedupeDostApp()
     view := ui.NewScriptView(app)
     
     // Set up session with groups

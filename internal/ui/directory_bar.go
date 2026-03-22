@@ -17,11 +17,11 @@ type DirectoryBar struct {
 	pathEntry     *widget.Entry
 	browseButton  *widget.Button
 	startButton   *widget.Button
-	dupDelApp     *DupDelApp
+	dupDelApp     *DedupeDostApp
 }
 
 // NewDirectoryBar creates a new directory bar
-func NewDirectoryBar(dupDelApp *DupDelApp) *DirectoryBar {
+func NewDirectoryBar(dupDelApp *DedupeDostApp) *DirectoryBar {
 	db := &DirectoryBar{
 		dupDelApp: dupDelApp,
 	}

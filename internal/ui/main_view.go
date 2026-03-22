@@ -6,11 +6,11 @@ import (
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/theme"
 
-	"github.com/dupdel/dup-del/internal/scanner"
+	"github.com/the100rabh/DedupeDost/internal/scanner"
 )
 
 // NewMainView creates the main view container
-func NewMainView(dupDelApp *DupDelApp) *MainView {
+func NewMainView(dupDelApp *DedupeDostApp) *MainView {
 	mv := &MainView{}
 
 	// Create components

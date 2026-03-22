@@ -6,7 +6,7 @@ type Template struct{}
 // BashScriptTemplate is the default bash script template
 const BashScriptTemplate = `#!/bin/bash
 # ============================================
-# DupDel Cleanup Script
+# DedupeDost Cleanup Script
 # ============================================
 # Generated: {{.GeneratedTime}}
 # Source Directory: {{.SourceDirectory}}

@@ -1,4 +1,4 @@
-# DupDel - Detailed Implementation Plan
+# DedupeDost - Detailed Implementation Plan
 
 ## Overview
 
@@ -14,7 +14,7 @@ This document provides a comprehensive, task-level implementation plan based on 
 **Duration**: 0.5 days  
 **Dependencies**: None  
 **Deliverables**:
-- [ ] Initialize Go module (`go mod init github.com/yourusername/dup-del`)
+- [ ] Initialize Go module (`go mod init github.com/yourusername/dedupedost`)
 - [ ] Create directory structure per spec
 - [ ] Set up `.gitignore` for Go projects
 - [ ] Create initial `go.mod` with Go 1.21+ requirement
@@ -23,8 +23,8 @@ This document provides a comprehensive, task-level implementation plan based on 
 
 **Files to Create**:
 ```
-dup-del/
-├── cmd/dup-del/main.go
+dedupedost/
+├── cmd/dedupedost/main.go
 ├── internal/
 ├── pkg/
 ├── assets/
@@ -226,10 +226,10 @@ func (d *Detector) Cancel()
 **Duration**: 2 days  
 **Dependencies**: Task 1.6  
 **Deliverables**:
-- [ ] `cmd/dup-del/main.go` - CLI entry point
-- [ ] `cmd/dup-del/flags.go` - Command line flag parsing
-- [ ] `cmd/dup-del/output.go` - Console output formatting
-- [ ] `cmd/dup-del/script.go` - CLI script generation
+- [ ] `cmd/dedupedost/main.go` - CLI entry point
+- [ ] `cmd/dedupedost/flags.go` - Command line flag parsing
+- [ ] `cmd/dedupedost/output.go` - Console output formatting
+- [ ] `cmd/dedupedost/script.go` - CLI script generation
 - [ ] Help documentation
 
 **Implementation Details**:
@@ -250,9 +250,9 @@ func (d *Detector) Cancel()
 
 **CLI Output Format**:
 ```
-$ dup-del --dir /home/user/docs
+$ dedupedost --dir /home/user/docs
 
-DupDel v1.0.0 - Duplicate File Scanner
+DedupeDost v1.0.0 - Duplicate File Scanner
 Scanning: /home/user/docs
 Options: Recursive=true, Hidden=false, MinSize=0
 
@@ -309,7 +309,7 @@ func (g *Generator) MakeExecutable(scriptPath string) error
 ```bash
 #!/bin/bash
 # ============================================
-# DupDel Cleanup Script
+# DedupeDost Cleanup Script
 # ============================================
 # Generated: {{.GeneratedTime}}
 # Source Directory: {{.SourceDirectory}}
@@ -1337,7 +1337,7 @@ func (s *ScriptView) CopyToClipboard() error
 │  ┌───────────────────────────────────────────────────┐  │
 │  │ 1  #!/bin/bash                                    │  │
 │  │ 2  # ============================================  │  │
-│  │ 3  # DupDel Cleanup Script                        │  │
+│  │ 3  # DedupeDost Cleanup Script                        │  │
 │  │ 4  # Generated: 2024-03-15 14:30:00              │  │
 │  │ 5  # ============================================  │  │
 │  │ 6                                                 │  │
@@ -1562,9 +1562,9 @@ go test -bench=. ./internal/detector
 - [ ] Reset to defaults option
 
 **Config File Location**:
-- Linux: `~/.config/dup-del/config.yaml`
-- macOS: `~/Library/Application Support/dup-del/config.yaml`
-- Windows: `%APPDATA%\dup-del\config.yaml`
+- Linux: `~/.config/dedupedost/config.yaml`
+- macOS: `~/Library/Application Support/dedupedost/config.yaml`
+- Windows: `%APPDATA%\dedupedost\config.yaml`
 
 ---
 
@@ -1660,15 +1660,15 @@ test_data/
 **Build Commands**:
 ```bash
 # Linux
-GOOS=linux GOARCH=amd64 go build -o dup-del-linux-amd64 ./cmd/dup-del
-GOOS=linux GOARCH=arm64 go build -o dup-del-linux-arm64 ./cmd/dup-del
+GOOS=linux GOARCH=amd64 go build -o dedupedost-linux-amd64 ./cmd/dedupedost
+GOOS=linux GOARCH=arm64 go build -o dedupedost-linux-arm64 ./cmd/dedupedost
 
 # macOS
-GOOS=darwin GOARCH=amd64 go build -o dup-del-macos-amd64 ./cmd/dup-del
-GOOS=darwin GOARCH=arm64 go build -o dup-del-macos-arm64 ./cmd/dup-del
+GOOS=darwin GOARCH=amd64 go build -o dedupedost-macos-amd64 ./cmd/dedupedost
+GOOS=darwin GOARCH=arm64 go build -o dedupedost-macos-arm64 ./cmd/dedupedost
 
 # Windows
-GOOS=windows GOARCH=amd64 go build -o dup-del-windows-amd64.exe ./cmd/dup-del
+GOOS=windows GOARCH=amd64 go build -o dedupedost-windows-amd64.exe ./cmd/dedupedost
 ```
 
 ---

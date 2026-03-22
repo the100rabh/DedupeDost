@@ -1,8 +1,8 @@
-# DupDel - Product Specification
+# DedupeDost - Product Specification
 
 ## 1. Executive Summary
 
-**Product Name**: DupDel (Duplicate File Deleter)
+**Product Name**: DedupeDost (Duplicate File Deleter)
 
 **Version**: 1.0.0
 
@@ -35,7 +35,7 @@ These duplicates waste storage space, create confusion, and make file management
 
 ## 3. Solution Overview
 
-DupDel provides a safe, visual, and user-controlled approach to duplicate file management:
+DedupeDost provides a safe, visual, and user-controlled approach to duplicate file management:
 
 1. **Scan**: Recursively analyze directory contents
 2. **Detect**: Identify duplicates using hash-based comparison
@@ -202,7 +202,7 @@ DupDel provides a safe, visual, and user-controlled approach to duplicate file m
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  [App Icon] DupDel                              ─ □ ×          │
+│  [App Icon] DedupeDost                              ─ □ ×          │
 ├─────────────────────────────────────────────────────────────────┤
 │  MENU BAR                                                       │
 │  File    Edit    View    Tools    Help                          │
@@ -328,7 +328,7 @@ DupDel provides a safe, visual, and user-controlled approach to duplicate file m
 ├─────────────────────────────────────────────────────────────────┤
 │  ┌───────────────────────────────────────────────────────────┐ │
 │  │ #!/bin/bash                                                │ │
-│  │ # DupDel Cleanup Script                                    │ │
+│  │ # DedupeDost Cleanup Script                                    │ │
 │  │ # Generated: 2024-03-15 14:30:00                          │ │
 │  │ # Source Directory: /home/user/documents                   │ │
 │  │ # Total files to delete: 127                              │ │
@@ -533,9 +533,9 @@ type ScanSession struct {
 ### 9.2 Package Structure
 
 ```
-dup-del/
+dedupedost/
 ├── cmd/
-│   └── dup-del/
+│   └── dedupedost/
 │       └── main.go              # Application entry point
 ├── internal/
 │   ├── app/
@@ -760,4 +760,4 @@ dup-del/
 
 **Document Version**: 1.0.0  
 **Last Updated**: 2024-03-15  
-**Author**: DupDel Team
+**Author**: DedupeDost Team
