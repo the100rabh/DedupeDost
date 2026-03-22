@@ -67,8 +67,8 @@ func TestScanOptions(t *testing.T) {
 	}
 }
 
-// TestScanProgress tests ScanProgress struct
-func TestScanProgress(t *testing.T) {
+// TestScanProgressStruct tests ScanProgress struct
+func TestScanProgressStruct(t *testing.T) {
 	progress := scanner.ScanProgress{
 		FilesScanned:    100,
 		TotalFiles:      500,
