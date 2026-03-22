@@ -355,7 +355,7 @@ func (rv *ResultsView) createCard(group *models.DuplicateGroup, index int) *resu
 	case 3: // Video
 		card.icon = widget.NewIcon(theme.MediaVideoIcon())
 	default:
-		card.icon.SetResource(theme.FileIcon())
+		card.icon = widget.NewIcon(theme.FileIcon())
 	}
 
 	// Title label
