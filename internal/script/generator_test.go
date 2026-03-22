@@ -473,3 +473,113 @@ func TestGenerator_Generate_StatisticsInHeader(t *testing.T) {
 		t.Error("Script should contain space to recover")
 	}
 }
+
+// TestGenerator_SetDryRunSupport_Method tests SetDryRunSupport getter
+func TestGenerator_SetDryRunSupport_Method(t *testing.T) {
+	g := script.NewGenerator("/tmp/test.sh")
+	
+	// Default should be true
+	if !g.DryRunSupport() {
+		t.Error("Default dryRunSupport should be true")
+	}
+	
+	g.SetDryRunSupport(false)
+	if g.DryRunSupport() {
+		t.Error("dryRunSupport should be false after SetDryRunSupport(false)")
+	}
+}
+
+// TestGenerator_ValidationErrors tests Validate error cases
+func TestGenerator_ValidationErrors(t *testing.T) {
+	g := script.NewGenerator("/tmp/test.sh")
+	
+	// Non-existent file
+	err := g.Validate("/nonexistent/path/file.sh")
+	if err == nil {
+		t.Error("Validate should return error for non-existent file")
+	}
+	if !strings.Contains(err.Error(), "script not found") {
+		t.Errorf("Error should mention 'script not found', got: %v", err)
+	}
+}
+
+// TestGenerator_MakeExecutable_Error tests MakeExecutable error case
+func TestGenerator_MakeExecutable_Error(t *testing.T) {
+	g := script.NewGenerator("/tmp/test.sh")
+	
+	err := g.MakeExecutable("/nonexistent/path/file.sh")
+	if err == nil {
+		t.Error("MakeExecutable should return error for non-existent file")
+	}
+}
+
+// TestGenerator_Generate_NoGroups tests Generate with no groups
+func TestGenerator_Generate_NoGroups(t *testing.T) {
+	tmpDir := t.TempDir()
+	scriptPath := filepath.Join(tmpDir, "cleanup.sh")
+
+	g := script.NewGenerator(scriptPath)
+	session := models.NewScanSession("/test")
+	// Don't add any groups
+
+	_, err := g.Generate(session)
+	if err != nil {
+		t.Fatalf("Generate failed: %v", err)
+	}
+
+	content, err := os.ReadFile(scriptPath)
+	if err != nil {
+		t.Fatalf("Failed to read script: %v", err)
+	}
+
+	contentStr := string(content)
+	if !strings.Contains(contentStr, "#!/bin/bash") {
+		t.Error("Script should contain shebang")
+	}
+}
+
+// TestGenerator_WithAllOptions tests Generate with all options disabled
+func TestGenerator_WithAllOptions(t *testing.T) {
+	tmpDir := t.TempDir()
+	scriptPath := filepath.Join(tmpDir, "cleanup.sh")
+
+	g := script.NewGenerator(scriptPath)
+	session := createTestSession(t)
+
+	// Disable all options
+	g.SetIncludeHeader(false)
+	g.SetIncludeComments(false)
+	g.SetDryRunSupport(false)
+
+	_, err := g.Generate(session)
+	if err != nil {
+		t.Fatalf("Generate failed: %v", err)
+	}
+
+	content, err := os.ReadFile(scriptPath)
+	if err != nil {
+		t.Fatalf("Failed to read script: %v", err)
+	}
+
+	contentStr := string(content)
+	
+	// Should not contain header
+	if strings.Contains(contentStr, "DupDel Cleanup Script") {
+		t.Error("Script should not contain header")
+	}
+	
+	// Should not contain DRY_RUN
+	if strings.Contains(contentStr, "DRY_RUN=${DRY_RUN:-false}") {
+		t.Error("Script should not contain DRY_RUN")
+	}
+	
+	// Should not contain comments
+	if strings.Contains(contentStr, "# Group 1:") {
+		t.Error("Script should not contain group comments")
+	}
+	
+	// Should use rm -f directly
+	if !strings.Contains(contentStr, "rm -f") {
+		t.Error("Script should contain rm -f")
+	}
+}

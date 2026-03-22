@@ -194,3 +194,18 @@ func (g *Generator) SetIncludeComments(include bool) {
 func (g *Generator) SetDryRunSupport(include bool) {
 	g.dryRunSupport = include
 }
+
+// IncludeHeader returns whether header comments are included
+func (g *Generator) IncludeHeader() bool {
+	return g.includeHeader
+}
+
+// IncludeComments returns whether group comments are included
+func (g *Generator) IncludeComments() bool {
+	return g.includeComments
+}
+
+// DryRunSupport returns whether DRY_RUN support is included
+func (g *Generator) DryRunSupport() bool {
+	return g.dryRunSupport
+}
