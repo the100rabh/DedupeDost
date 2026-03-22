@@ -1,0 +1,15 @@
+FAIL	github.com/dupdel/dup-del/pkg/models [build failed]
+	github.com/dupdel/dup-del/pkg/types		coverage: 0.0% of statements
+	github.com/dupdel/dup-del/internal/detector		coverage: 0.0% of statements
+FAIL	github.com/dupdel/dup-del/internal/hasher [build failed]
+	github.com/dupdel/dup-del/internal/platform		coverage: 0.0% of statements
+	github.com/dupdel/dup-del/internal/preview		coverage: 0.0% of statements
+FAIL	github.com/dupdel/dup-del/internal/rules [build failed]
+	github.com/dupdel/dup-del/internal/scanner		coverage: 0.0% of statements
+--- FAIL: TestGenerator_SetDryRunSupport (0.00s)
+    generator_test.go:234: Script should not contain DRY_RUN when SetDryRunSupport(false)
+FAIL
+coverage: 49.6% of statements
+FAIL	github.com/dupdel/dup-del/internal/script	0.009s
+	github.com/dupdel/dup-del/internal/ui		coverage: 0.0% of statements
+FAIL

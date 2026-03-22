@@ -38,7 +38,7 @@ func NewBatchApplier(engine *RuleEngine) *BatchApplier {
 }
 
 // Apply applies a rule to multiple groups
-func (b *BatchApplier) Apply(groups []models.DuplicateGroup, rule *Rule, progressCallback func(*BatchProgress)) (int, int, error) {
+func (b *BatchApplier) Apply(groups []*models.DuplicateGroup, rule *Rule, progressCallback func(*BatchProgress)) (int, int, error) {
 	b.progress = &BatchProgress{
 		Total:     len(groups),
 		Processed: 0,
@@ -46,54 +46,54 @@ func (b *BatchApplier) Apply(groups []models.DuplicateGroup, rule *Rule, progres
 		Skipped:   0,
 		Done:      false,
 	}
-	
-	evaluator := b.getEvaluator(rule.Criteria)
-	if evaluator == nil {
+
+	// Get evaluator from engine
+	evaluator, ok := b.engine.evaluators[rule.Criteria]
+	if !ok {
 		return 0, 0, ErrNoEvaluator
 	}
-	
-	for i := range groups {
+
+	for _, group := range groups {
 		// Check for cancellation
 		select {
 		case <-b.ctx.Done():
 			return b.progress.Applied, b.progress.Skipped, b.ctx.Err()
 		default:
 		}
-		
-		group := &groups[i]
+
 		b.progress.CurrentGroup = group.ID
-		
+
 		if !evaluator.IsApplicable(group) {
 			b.progress.Skipped++
 			b.progress.Processed++
-			
+
 			if progressCallback != nil {
 				progressCallback(b.progress)
 			}
 			continue
 		}
-		
+
 		keepIndex, err := evaluator.Evaluate(group)
 		if err != nil {
 			b.progress.Skipped++
 			b.progress.Processed++
-			
+
 			if progressCallback != nil {
 				progressCallback(b.progress)
 			}
 			continue
 		}
-		
+
 		group.MarkForDeletion([]int{keepIndex})
 		group.RuleApplied = &models.Rule{
 			ID:       rule.ID,
 			Name:     rule.Name,
 			Criteria: models.RuleCriteria(rule.Criteria),
 		}
-		
+
 		b.progress.Applied++
 		b.progress.Processed++
-		
+
 		if progressCallback != nil {
 			progressCallback(b.progress)
 		}
@@ -110,6 +110,7 @@ func (b *BatchApplier) getEvaluator(criteria RuleCriteria) RuleEvaluator {
 		CriteriaKeepOldest:       &OldestEvaluator{},
 		CriteriaKeepShortestPath: &ShortestPathEvaluator{},
 		CriteriaKeepLongestPath:  &LongestPathEvaluator{},
+		CriteriaKeepSpecificDir:  &SpecificDirEvaluator{},
 		CriteriaKeepLargest:      &LargestEvaluator{},
 		CriteriaKeepSmallest:     &SmallestEvaluator{},
 	}

@@ -152,22 +152,22 @@ func (e *RuleEngine) GetHistory() []RuleApplication {
 }
 
 // UndoLast undoes the last rule application
-func (e *RuleEngine) UndoLast(groups []models.DuplicateGroup) bool {
+func (e *RuleEngine) UndoLast(groups []*models.DuplicateGroup) bool {
 	if len(e.history) == 0 {
 		return false
 	}
-	
+
 	last := e.history[len(e.history)-1]
 	e.history = e.history[:len(e.history)-1]
-	
+
 	// Find and clear the group
-	for i := range groups {
-		if groups[i].ID == last.GroupID {
-			groups[i].ClearDecisions()
+	for _, group := range groups {
+		if group.ID == last.GroupID {
+			group.ClearDecisions()
 			return true
 		}
 	}
-	
+
 	return false
 }
 
