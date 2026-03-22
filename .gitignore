@@ -1,0 +1,45 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+dup-del
+dup-del.exe
+
+# Test binary
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Test artifacts
+test_data/
+*.log
+
+# Screenshot test artifacts
+tests/ui/screenshot/testdata/diff/
+tests/ui/screenshot/testdata/golden/*.png
+!tests/ui/screenshot/testdata/golden/.gitkeep
