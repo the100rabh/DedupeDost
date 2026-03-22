@@ -19,13 +19,13 @@ func NewStatsCalculator() *StatsCalculator {
 }
 
 // Calculate calculates all statistics from the given groups
-func (c *StatsCalculator) Calculate(groups []models.DuplicateGroup) DetectionStats {
+func (c *StatsCalculator) Calculate(groups []*models.DuplicateGroup) DetectionStats {
 	totalFiles := 0
 	totalSize := int64(0)
 	duplicateFiles := 0
 	duplicateGroups := len(groups)
 	recoverableSize := int64(0)
-	
+
 	for _, group := range groups {
 		fileCount := group.GetFileCount()
 		totalFiles += fileCount
@@ -33,7 +33,7 @@ func (c *StatsCalculator) Calculate(groups []models.DuplicateGroup) DetectionSta
 		duplicateFiles += group.GetDuplicateCount()
 		recoverableSize += group.GetRecoverableSize()
 	}
-	
+
 	return DetectionStats{
 		TotalFiles:      totalFiles,
 		TotalSize:       totalSize,

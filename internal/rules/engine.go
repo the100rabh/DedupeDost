@@ -109,42 +109,40 @@ func (e *RuleEngine) ApplyRule(group *models.DuplicateGroup, rule *Rule) error {
 }
 
 // ApplyToAll applies a rule to all groups
-func (e *RuleEngine) ApplyToAll(groups []models.DuplicateGroup, rule *Rule) (applied int, skipped int, err error) {
+func (e *RuleEngine) ApplyToAll(groups []*models.DuplicateGroup, rule *Rule) (applied int, skipped int, err error) {
 	evaluator, ok := e.evaluators[rule.Criteria]
 	if !ok {
 		return 0, 0, fmt.Errorf("no evaluator for criteria: %s", rule.Criteria)
 	}
-	
-	for i := range groups {
-		group := &groups[i]
-		
+
+	for _, group := range groups {
 		if !evaluator.IsApplicable(group) {
 			skipped++
 			continue
 		}
-		
+
 		keepIndex, evalErr := evaluator.Evaluate(group)
 		if evalErr != nil {
 			skipped++
 			continue
 		}
-		
+
 		group.MarkForDeletion([]int{keepIndex})
 		group.RuleApplied = &models.Rule{
 			ID:       rule.ID,
 			Name:     rule.Name,
 			Criteria: models.RuleCriteria(rule.Criteria),
 		}
-		
+
 		e.history = append(e.history, RuleApplication{
 			GroupID:   group.ID,
 			RuleID:    rule.ID,
 			KeepIndex: keepIndex,
 		})
-		
+
 		applied++
 	}
-	
+
 	return applied, skipped, nil
 }
 

@@ -9,17 +9,17 @@ import (
 
 // ScanSession represents a complete scan operation
 type ScanSession struct {
-	ID               string            // Unique session identifier
-	SourceDir        string            // Scanned directory
-	StartTime        time.Time         // When scan started
-	EndTime          time.Time         // When scan ended
-	TotalFiles       int               // Total files scanned
-	TotalSize        int64             // Total size in bytes
-	DuplicateGroups  []DuplicateGroup  // Found duplicate groups
-	FilesToDelete    int               // Count of files marked for deletion
-	SpaceRecoverable int64             // Recoverable space in bytes
-	GeneratedScript  string            // Path to generated script
-	FilterOptions    map[string]string // Applied filter options
+	ID               string             // Unique session identifier
+	SourceDir        string             // Scanned directory
+	StartTime        time.Time          // When scan started
+	EndTime          time.Time          // When scan ended
+	TotalFiles       int                // Total files scanned
+	TotalSize        int64              // Total size in bytes
+	DuplicateGroups  []*DuplicateGroup  // Found duplicate groups
+	FilesToDelete    int                // Count of files marked for deletion
+	SpaceRecoverable int64              // Recoverable space in bytes
+	GeneratedScript  string             // Path to generated script
+	FilterOptions    map[string]string  // Applied filter options
 }
 
 // NewScanSession creates a new scan session for the given directory
@@ -28,7 +28,7 @@ func NewScanSession(sourceDir string) *ScanSession {
 		ID:              uuid.New().String(),
 		SourceDir:       sourceDir,
 		StartTime:       time.Now(),
-		DuplicateGroups: make([]DuplicateGroup, 0),
+		DuplicateGroups: make([]*DuplicateGroup, 0),
 		FilterOptions:   make(map[string]string),
 	}
 }
@@ -70,7 +70,7 @@ func (s *ScanSession) GetDurationString() string {
 }
 
 // AddGroup adds a duplicate group to the session
-func (s *ScanSession) AddGroup(group DuplicateGroup) {
+func (s *ScanSession) AddGroup(group *DuplicateGroup) {
 	s.DuplicateGroups = append(s.DuplicateGroups, group)
 }
 

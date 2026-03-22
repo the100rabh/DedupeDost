@@ -137,19 +137,14 @@ func (sv *ScriptView) generate() {
 	// Get groups from results
 	groups := sv.dupDelApp.mainView.resultsView.groups
 	if len(groups) == 0 {
-		dialog.ShowError(fmt.Errorf("no duplicate groups found"), 
+		dialog.ShowError(fmt.Errorf("no duplicate groups found"),
 			fyne.CurrentApp().Driver().AllWindows()[0])
 		return
 	}
-	
+
 	// Create session
 	sv.session = models.NewScanSession(sv.dupDelApp.GetScanDirectory())
 	sv.session.DuplicateGroups = groups
-	
-	// Mark files for deletion (keep first in each group by default)
-	for i := range sv.session.DuplicateGroups {
-		sv.session.DuplicateGroups[i].MarkForDeletion([]int{0})
-	}
 	sv.session.CalculateStatistics()
 	
 	// Create generator

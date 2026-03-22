@@ -25,8 +25,8 @@ type ResultsView struct {
 	selectAllBtn   *widget.Button
 	deselectAllBtn *widget.Button
 	generateBtn    *widget.Button
-	groups         []models.DuplicateGroup
-	filteredGroups []models.DuplicateGroup
+	groups         []*models.DuplicateGroup
+	filteredGroups []*models.DuplicateGroup
 	selectedGroup  int
 	dupDelApp      *DupDelApp
 	cards          []*resultsCard
@@ -40,7 +40,7 @@ type resultsCard struct {
 	titleLabel  *widget.Label
 	detailLabel *widget.Label
 	filesList   *fyne.Container
-	group       models.DuplicateGroup
+	group       *models.DuplicateGroup
 }
 
 // HoverableCard wraps content with hover and tap support
@@ -122,8 +122,8 @@ func (r *hoverableCardRenderer) Destroy() {
 func NewResultsView(dupDelApp *DupDelApp) *ResultsView {
 	rv := &ResultsView{
 		dupDelApp:      dupDelApp,
-		groups:         make([]models.DuplicateGroup, 0),
-		filteredGroups: make([]models.DuplicateGroup, 0),
+		groups:         make([]*models.DuplicateGroup, 0),
+		filteredGroups: make([]*models.DuplicateGroup, 0),
 		cards:          make([]*resultsCard, 0),
 		selectedGroup:  -1,
 	}
@@ -208,7 +208,10 @@ func (rv *ResultsView) FilterPanel() *FilterPanel {
 
 // SetGroups sets the duplicate groups to display
 func (rv *ResultsView) SetGroups(groups []models.DuplicateGroup) {
-	rv.groups = groups
+	rv.groups = make([]*models.DuplicateGroup, len(groups))
+	for i := range groups {
+		rv.groups[i] = &groups[i]
+	}
 	rv.filterGroups("")
 	rv.generateBtn.Enable()
 }
@@ -217,7 +220,7 @@ func (rv *ResultsView) SetGroups(groups []models.DuplicateGroup) {
 func (rv *ResultsView) filterGroups(text string) {
 	text = strings.ToLower(text)
 
-	rv.filteredGroups = make([]models.DuplicateGroup, 0)
+	rv.filteredGroups = make([]*models.DuplicateGroup, 0)
 	for _, group := range rv.groups {
 		if text == "" {
 			rv.filteredGroups = append(rv.filteredGroups, group)
@@ -307,7 +310,7 @@ func (rv *ResultsView) refreshCards() {
 }
 
 // updateCard updates an existing card with new group data
-func (rv *ResultsView) updateCard(card *resultsCard, group models.DuplicateGroup, index int) {
+func (rv *ResultsView) updateCard(card *resultsCard, group *models.DuplicateGroup, index int) {
 	card.group = group
 
 	// Update icon based on file type
@@ -340,7 +343,7 @@ func (rv *ResultsView) updateCard(card *resultsCard, group models.DuplicateGroup
 }
 
 // createCard creates a card for a duplicate group
-func (rv *ResultsView) createCard(group models.DuplicateGroup, index int) *resultsCard {
+func (rv *ResultsView) createCard(group *models.DuplicateGroup, index int) *resultsCard {
 	card := &resultsCard{}
 
 	// Icon based on file type
@@ -352,7 +355,7 @@ func (rv *ResultsView) createCard(group models.DuplicateGroup, index int) *resul
 	case 3: // Video
 		card.icon = widget.NewIcon(theme.MediaVideoIcon())
 	default:
-		card.icon = widget.NewIcon(theme.FileIcon())
+		card.icon.SetResource(theme.FileIcon())
 	}
 
 	// Title label
@@ -390,7 +393,7 @@ func (rv *ResultsView) createCard(group models.DuplicateGroup, index int) *resul
 }
 
 // createFileList creates a list of files with paths and keep/delete indicators
-func (rv *ResultsView) createFileList(group models.DuplicateGroup) *fyne.Container {
+func (rv *ResultsView) createFileList(group *models.DuplicateGroup) *fyne.Container {
 	fileList := container.NewVBox()
 
 	for _, file := range group.Files {
@@ -452,7 +455,7 @@ func (rv *ResultsView) onGroupSelected(index int) {
 	}
 
 	rv.selectedGroup = index
-	group := &rv.filteredGroups[index]
+	group := rv.filteredGroups[index]
 
 	// Show preview
 	if rv.dupDelApp != nil && rv.dupDelApp.mainView != nil {
@@ -479,8 +482,8 @@ func (rv *ResultsView) deselectAll() {
 }
 
 // getSelectedGroups returns groups with deletion decisions
-func (rv *ResultsView) getSelectedGroups() []models.DuplicateGroup {
-	var selected []models.DuplicateGroup
+func (rv *ResultsView) getSelectedGroups() []*models.DuplicateGroup {
+	var selected []*models.DuplicateGroup
 	for _, group := range rv.groups {
 		if len(group.DeletePaths) > 0 {
 			selected = append(selected, group)

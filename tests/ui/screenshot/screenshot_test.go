@@ -336,7 +336,7 @@ func TestScreenshot_ScriptView(t *testing.T) {
 
 		// Create session and mark files for deletion
 		session := models.NewScanSession(tmpDir)
-		session.DuplicateGroups = []models.DuplicateGroup{group}
+		session.DuplicateGroups = []*models.DuplicateGroup{&group}
 		session.DuplicateGroups[0].MarkForDeletion([]int{0})
 		session.CalculateStatistics()
 

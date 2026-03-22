@@ -327,10 +327,10 @@ func (pv *PreviewView) refreshResultsView() {
 }
 
 // SetGroups sets all groups for navigation
-func (pv *PreviewView) SetGroups(groups []models.DuplicateGroup) {
+func (pv *PreviewView) SetGroups(groups []*models.DuplicateGroup) {
 	pv.totalGroups = len(groups)
 	if len(groups) > 0 {
-		pv.setGroup(&groups[0])
+		pv.setGroup(groups[0])
 		pv.groupIndex = 0
 	}
 }
@@ -342,7 +342,7 @@ func (pv *PreviewView) previousGroup() {
 		if pv.dupDelApp != nil && pv.dupDelApp.mainView != nil {
 			groups := pv.dupDelApp.mainView.resultsView.filteredGroups
 			if pv.groupIndex < len(groups) {
-				pv.setGroup(&groups[pv.groupIndex])
+				pv.setGroup(groups[pv.groupIndex])
 			}
 		}
 	}
@@ -355,7 +355,7 @@ func (pv *PreviewView) nextGroup() {
 		if pv.dupDelApp != nil && pv.dupDelApp.mainView != nil {
 			groups := pv.dupDelApp.mainView.resultsView.filteredGroups
 			if pv.groupIndex < len(groups) {
-				pv.setGroup(&groups[pv.groupIndex])
+				pv.setGroup(groups[pv.groupIndex])
 			}
 		}
 	}
@@ -363,8 +363,42 @@ func (pv *PreviewView) nextGroup() {
 
 // saveDecision saves the current decision
 func (pv *PreviewView) saveDecision() {
-	// Decision already saved in keepFile/keepBoth
+	// Apply to all remaining groups if checked
+	if pv.applyToAll.Checked && pv.currentGroup != nil && len(pv.currentGroup.KeepIndices) > 0 {
+		pv.applyDecisionToAllRemainingGroups()
+	}
 	pv.nextGroup()
+}
+
+// applyDecisionToAllRemainingGroups applies the current group's decision to all remaining groups
+func (pv *PreviewView) applyDecisionToAllRemainingGroups() {
+	if pv.dupDelApp == nil || pv.dupDelApp.mainView == nil {
+		return
+	}
+
+	groups := pv.dupDelApp.mainView.resultsView.filteredGroups
+	keepIndices := pv.currentGroup.KeepIndices
+
+	// Apply the same keep indices to all remaining groups
+	for i := pv.groupIndex + 1; i < len(groups); i++ {
+		// Only apply if the group has enough files
+		if len(groups[i].Files) > 0 && len(keepIndices) > 0 {
+			// Validate that keep indices are valid for this group
+			validIndices := make([]int, 0)
+			for _, idx := range keepIndices {
+				if idx < len(groups[i].Files) {
+					validIndices = append(validIndices, idx)
+				}
+			}
+			// If we have valid indices, apply the decision
+			if len(validIndices) > 0 {
+				groups[i].MarkForDeletion(validIndices)
+			}
+		}
+	}
+
+	// Refresh the results view to show updated decisions
+	pv.dupDelApp.mainView.resultsView.refreshCards()
 }
 
 // skipGroup skips the current group
