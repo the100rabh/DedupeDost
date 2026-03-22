@@ -44,6 +44,85 @@ A powerful Go application that scans directories recursively to find duplicate f
 - Manual Selection
 - Smart auto-selection based on folder patterns
 
+## 🧪 Testing
+
+### Quick Start
+
+**Linux/macOS:**
+```bash
+./run_tests.sh              # Run all tests with coverage
+./run_tests.sh -v           # Run with verbose output
+./run_tests.sh -race        # Run with race detector
+./run_tests.sh -html        # Generate HTML coverage report
+./run_tests.sh -help        # Show all options
+```
+
+**Windows:**
+```cmd
+run_tests.bat              REM Run all tests with coverage
+run_tests.bat -v           REM Run with verbose output
+run_tests.bat -race        REM Run with race detector
+run_tests.bat -html        REM Generate HTML coverage report
+```
+
+### Manual Testing
+
+**Run all tests:**
+```bash
+go test ./...
+```
+
+**Run with coverage:**
+```bash
+go test ./... -cover
+```
+
+**Run with coverage profile:**
+```bash
+go test ./... -coverprofile=coverage.out
+go tool cover -func=coverage.out          # View coverage by function
+go tool cover -html=coverage.out          # Generate HTML report
+```
+
+**Run specific packages:**
+```bash
+go test ./pkg/...                         # Test pkg packages
+go test ./internal/...                    # Test internal packages
+go test ./cmd/...                         # Test cmd packages
+```
+
+**Run with race detector:**
+```bash
+go test ./... -race -cover
+```
+
+### GUI Tests
+
+To run GUI tests (requires X11/OpenGL on Linux):
+
+```bash
+# Install dependencies (Ubuntu/Debian)
+sudo apt-get install libgl1-mesa-dev xorg-dev
+
+# Run all tests including GUI
+./run_tests.sh -gui
+```
+
+### Coverage Goals
+
+| Package | Target | Status |
+|---------|--------|--------|
+| pkg/types | 100% | ✅ 100.0% |
+| pkg/models | 95% | ✅ 96.8% |
+| internal/script | 90% | ✅ 94.7% |
+| internal/detector | 90% | ✅ 92.6% |
+| internal/hasher | 80% | ✅ 84.8% |
+| internal/rules | 70% | ✅ 71.1% |
+| internal/scanner | 70% | ✅ 71.1% |
+| cmd/dup-del | 70% | ✅ 71.7% |
+
+Note: GUI packages (`internal/ui`, `cmd/dup-del-gui`) require X11/OpenGL and are tested separately.
+
 ## 📦 Installation
 
 ### From Source
