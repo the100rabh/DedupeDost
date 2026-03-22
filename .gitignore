@@ -6,6 +6,7 @@
 *.dylib
 dup-del
 dup-del.exe
+dup-del-gui
 dedupedost
 dedupedost-gui
 dedupedost.exe
